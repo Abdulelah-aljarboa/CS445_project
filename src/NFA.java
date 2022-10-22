@@ -171,16 +171,16 @@ public class NFA {
 }
 
  class NfaBuilder {
-	private NfaHelper nfaManager = null;
+	private NfaHelper nfaHelper = null;
 
 	public NfaBuilder() {
-		nfaManager = new NfaHelper();
+		nfaHelper = new NfaHelper();
 	}
 
 	public Pair constructStarClosure(Pair pairIn) {
 		Pair pairOut = new Pair();
-		pairOut.startNode = nfaManager.newNfa();
-		pairOut.endNode = nfaManager.newNfa();
+		pairOut.startNode = nfaHelper.newNfa();
+		pairOut.endNode = nfaHelper.newNfa();
 
 		pairOut.startNode.next = pairIn.startNode;
 		pairIn.endNode.next = pairOut.endNode;
@@ -197,8 +197,8 @@ public class NFA {
 	public Pair constructPlusClosure(Pair pairIn) {
 		Pair pairOut = new Pair();
 
-		pairOut.startNode = nfaManager.newNfa();
-		pairOut.endNode = nfaManager.newNfa();
+		pairOut.startNode = nfaHelper.newNfa();
+		pairOut.endNode = nfaHelper.newNfa();
 		pairOut.startNode.next = pairIn.startNode;
 
 		pairIn.endNode.next = pairOut.endNode;
@@ -212,8 +212,8 @@ public class NFA {
 	public Pair constructNfaForSingleCharacter(char c) {
 
 		Pair pairOut = new Pair();
-		pairOut.startNode = nfaManager.newNfa();
-		pairOut.endNode = nfaManager.newNfa();
+		pairOut.startNode = nfaHelper.newNfa();
+		pairOut.endNode = nfaHelper.newNfa();
 		pairOut.startNode.next = pairOut.endNode;
 		pairOut.startNode.setEdge(c);
 
@@ -222,8 +222,8 @@ public class NFA {
 
 	public Pair constructNfaForOR(Pair left, Pair right) {
 		Pair pair = new Pair();
-		pair.startNode = nfaManager.newNfa();
-		pair.endNode = nfaManager.newNfa();
+		pair.startNode = nfaHelper.newNfa();
+		pair.endNode = nfaHelper.newNfa();
 
 		pair.startNode.next = left.startNode;
 		pair.startNode.next2 = right.startNode;
