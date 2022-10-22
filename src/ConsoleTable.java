@@ -6,13 +6,16 @@ import java.util.List;
 public class ConsoleTable {
 
 	private LinkedList<List> rows = new LinkedList<List>();
+
 	private int colum;
+
 	private int[] columLen;
+
 	private static int margin = 2;
 
 	
 
-	public ConsoleTable(int colum, boolean printHeader) {
+	public ConsoleTable(int colum) {
 		this.colum = colum;
 		this.columLen = new int[colum];
 	}

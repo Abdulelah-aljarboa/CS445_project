@@ -21,7 +21,7 @@ public class NFA {
             letter[i+1] = (char)tempObj[i] + "";
         }
         letter[i+1] = "Epsilon";
-        table = new ConsoleTable(letter.length, true);
+        table = new ConsoleTable(letter.length);
 		table.appendRow();
 		for (String string : letter) {
 			table.appendColum(string);
@@ -199,12 +199,10 @@ public class NFA {
 
 		pairOut.startNode = nfaManager.newNfa();
 		pairOut.endNode = nfaManager.newNfa();
-
 		pairOut.startNode.next = pairIn.startNode;
+
 		pairIn.endNode.next = pairOut.endNode;
-
 		pairIn.endNode.next2 = pairOut.startNode;
-
 		pairIn.startNode = pairOut.startNode;
 		pairIn.endNode = pairOut.endNode;
 
@@ -251,7 +249,7 @@ public class NFA {
     private final int NFA_MAX = 256; 
     private Node[] nfaStatesArr = null;
     private Stack<Node> nfaStack = null;
-    private int nextAlloc = 0; 
+    private int index = 0; 
     private int nfaStates = 0; 
     
     public NfaHelper()  {
@@ -266,13 +264,13 @@ public class NFA {
     
     public Node newNfa()  {
     	Node nfa = null;
-    	if (nfaStack.size() > 0) {
-    		nfa = nfaStack.pop();
-    	}
-    	else {
-    		nfa = nfaStatesArr[nextAlloc];
-    		nextAlloc++;
-    	}
+    	//if (nfaStack.size() > 0) {
+    		//nfa = nfaStack.pop();
+    	//}
+    	//else {
+    		nfa = nfaStatesArr[index];
+    		index++;
+    	//}
     	
     	nfa.clearState();
     	nfa.setState(nfaStates++);
@@ -335,4 +333,5 @@ public class NFA {
  class Pair {
     public Node startNode;
     public Node endNode;
+
 }
