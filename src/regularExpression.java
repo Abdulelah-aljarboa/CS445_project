@@ -1,3 +1,5 @@
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 
 public class regularExpression {
@@ -35,11 +37,14 @@ public class regularExpression {
         this.postfixREGEX = postfixREGEX;
     }
 
+	public int getLength() {
+		return this.REGEX.length();
+	}
+
     
 
     //Add "." in the places that need to have one, so we have right representation. (ab) -> (a.b)
     public void REGEX_Concatenation() {  
-        System.out.println("Before Concatenation: " + REGEX);
         int length = REGEX.length(); //the length of the original regular expression 
         if(length == 1) { // if the length is 1 which means only one letter, return the same thing 
             System.out.println("No Need for alteration -> " + REGEX);
@@ -147,6 +152,16 @@ public class regularExpression {
 				return true;
 			return false;
 		}
+	}
+
+	public Set<Character> listOfCharacters() {
+		Set<Character> temp = new HashSet<>();
+		for (int i = 0; i < this.REGEX.length(); i++) { 
+			if(this.is_letter(this.REGEX.charAt(i))) {
+				temp.add(this.REGEX.charAt(i));
+			}
+		}
+		return temp;
 	}
 
     
