@@ -12,7 +12,6 @@ public class test {
         r1.REGEX_Postfix(); 
 		NFA nfa = new NFA(r1);
 		nfa.RegularExpression_To_NFA();
-        System.out.println(nfa.getPair().toString());
 		nfa.print();
 		
 		DFA dfa = new DFA(nfa.getPair(),nfa.getLetter());

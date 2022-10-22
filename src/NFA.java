@@ -83,7 +83,7 @@ public class NFA {
     public void print() {
 		restate(this.pair.startNode);
 		revisit(this.pair.startNode);
-		System.out.println("--------NFA--------");
+		System.out.println("********NFA********");
 		table.appendRow();
 		printNfa(this.pair.startNode);
 		System.out.print(table);
@@ -248,7 +248,6 @@ public class NFA {
  class NfaHelper {
     private final int NFA_MAX = 256; 
     private Node[] nfaStatesArr = null;
-    private Stack<Node> nfaStack = null;
     private int index = 0; 
     private int nfaStates = 0; 
     
@@ -257,20 +256,12 @@ public class NFA {
     	for (int i = 0; i < NFA_MAX; i++) {
     		nfaStatesArr[i] = new Node();
     	}
-    	
-    	nfaStack = new Stack<Node>();
-    	
     }
     
     public Node newNfa()  {
     	Node nfa = null;
-    	//if (nfaStack.size() > 0) {
-    		//nfa = nfaStack.pop();
-    	//}
-    	//else {
-    		nfa = nfaStatesArr[index];
-    		index++;
-    	//}
+    	nfa = nfaStatesArr[index];
+    	index++;
     	
     	nfa.clearState();
     	nfa.setState(nfaStates++);
