@@ -118,7 +118,7 @@ public class NFA {
 
 		startNfa.setVisited();
 
-		printNfaNode(startNfa);
+		printNode_NFA(startNfa);
 		if (startNfa.next != null) {
 			table.appendRow();
 		}
@@ -126,7 +126,7 @@ public class NFA {
 		printNfa(startNfa.next2);
 	}
 
-    private void printNfaNode(Node node) {
+    private void printNode_NFA(Node node) {
 		if (node.next != null) {
 			table.appendColum(node.getState());
 			if(node.getEdge()==-1) {
@@ -281,13 +281,6 @@ public class NFA {
     	return nfa;
     }
     
-    public void discardNfa(Node nfaDiscarded) {
-    	--nfaStates;
-    	nfaDiscarded.clearState();
-    	nfaStack.push(nfaDiscarded);
-    }
-    
-   
 }
 
  class Node {
