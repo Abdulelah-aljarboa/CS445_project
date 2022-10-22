@@ -171,10 +171,10 @@ public class NFA {
 }
 
  class NfaBuilder {
-	private NfaManager nfaManager = null;
+	private NfaHelper nfaManager = null;
 
 	public NfaBuilder() {
-		nfaManager = new NfaManager();
+		nfaManager = new NfaHelper();
 	}
 
 	public Pair constructStarClosure(Pair pairIn) {
@@ -247,14 +247,14 @@ public class NFA {
 	}
 }
 
- class NfaManager {
+ class NfaHelper {
     private final int NFA_MAX = 256; 
     private Node[] nfaStatesArr = null;
     private Stack<Node> nfaStack = null;
     private int nextAlloc = 0; 
     private int nfaStates = 0; 
     
-    public NfaManager()  {
+    public NfaHelper()  {
     	nfaStatesArr = new Node[NFA_MAX];
     	for (int i = 0; i < NFA_MAX; i++) {
     		nfaStatesArr[i] = new Node();
