@@ -117,7 +117,7 @@ public class regularExpression {
 		case '.':
 			return 5;
 		case '|':
-			return 3;
+			return 3; 
 		case ')':
 			return 8;
 		}
@@ -149,7 +149,7 @@ public class regularExpression {
 			return false;
 		}
 	}
-
+	// return the set of the letters used
 	public Set<Character> listOfCharacters() {
 		Set<Character> temp = new HashSet<>();
 		for (int i = 0; i < this.REGEX.length(); i++) { 
