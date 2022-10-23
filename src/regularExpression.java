@@ -54,7 +54,7 @@ public class regularExpression {
         char[] output_String = new char[2 * length + 2]; // we multiply by 2 because if all letters are divided by concat, we need to double the number of spaces that we have. and plus 2 for the parantheses
         char first = ' ';
         char second = ' ';
-        for (int i = 0; i < length - 1; i++) {
+        for (int i = 0; i < length - 1; i++) { 
             first = REGEX.charAt(i);
             second = REGEX.charAt(i + 1);
             output_String[output_String_length++] = first;
@@ -86,7 +86,7 @@ public class regularExpression {
 				output_string = output_string + ch1;
 				ch1 = concatREGEX_postHelper.charAt(read_Index++);
 			} else {
-				ch2 = s.peek();
+				ch2 = s.peek(); //[#,(] )
 				if (inStack(ch2) < outStack(ch1)) {
 					s.push(ch1);
 					ch1 = concatREGEX_postHelper.charAt(read_Index++);
@@ -114,8 +114,6 @@ public class regularExpression {
 			return 1;
 		case '*':
 			return 7;
-		case '+':
-			return 7;
 		case '.':
 			return 5;
 		case '|':
@@ -133,8 +131,6 @@ public class regularExpression {
 		case '(':
 			return 8;
 		case '*':
-			return 6;
-		case '+':
 			return 6;
 		case '.':
 			return 4;
